@@ -66,7 +66,8 @@ class Main extends Sprite
 		#if !debug
 		initialState = Startup;
 		#end
-
+                
+		SUtil.doTheCheck();
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
 		#if !mobile
