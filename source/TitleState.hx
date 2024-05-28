@@ -253,6 +253,11 @@ class TitleState extends MusicBeatState
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
 
+		#i#if sys
+		if (!sys.FileSystem.exists(SUtil.getPath() + "assets/replays"))
+			sys.FileSystem.createDirectory(SUtil.getPath() + "assets/replays");
+		#end
+			
 		#if mobile
 		for (touch in FlxG.touches.list)
 		{
