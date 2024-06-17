@@ -48,7 +48,10 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		//#if polymod
+
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end//#if polymod
 		//polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		//#end
 		//FlxGraphic.defaultPersist = true;
@@ -250,6 +253,11 @@ class TitleState extends MusicBeatState
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
 
+		#i#if sys
+		if (!sys.FileSystem.exists(SUtil.getPath() + "assets/replays"))
+			sys.FileSystem.createDirectory(SUtil.getPath() + "assets/replays");
+		#end
+			
 		#if mobile
 		for (touch in FlxG.touches.list)
 		{
